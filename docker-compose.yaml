@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  jupyter:
+    image: quay.io/jupyter/datascience-notebook:2024-12-23
+    restart: always
+    container_name: jupyter
+    volumes:
+      - jupyter-data:/home/jovyan/work
+    ports:
+      - "8888:8888"
+volumes:
+  jupyter-data:
+    name: jupyter-data
