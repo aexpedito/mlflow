@@ -6,3 +6,6 @@ $ docker-compose kill
 
 
 minio-bucket
+
+git config credential.helper store
+
