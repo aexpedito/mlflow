@@ -1,5 +1,4 @@
 .idea/
 .venv/
-.env
 db_data/
 minio_data/
