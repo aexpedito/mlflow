@@ -1,0 +1,8 @@
+# https://blog.min.io/setting-up-a-development-machine-with-mlflow-and-minio/
+
+
+$ docker-compose --env-file .env up -d --build
+$ docker-compose kill
+
+
+minio-bucket
