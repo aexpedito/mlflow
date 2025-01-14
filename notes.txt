@@ -4,8 +4,34 @@
 $ docker-compose --env-file .env up -d --build
 $ docker-compose kill
 
+$ git config credential.helper store
 
-minio-bucket
+$ aws s3 cp notes.txt s3://minio-bucket/artifacts/python_env.yaml --endpoint-url http://localhost:9000
 
-git config credential.helper store
+#Permanently delete runs in the `deleted` lifecycle stage.
+$ mlflow gc
 
+
+
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::minio-bucket"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "arn:aws:s3:::minio-bucket/*"
+        }
+    ]
+}

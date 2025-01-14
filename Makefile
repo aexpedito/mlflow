@@ -5,7 +5,9 @@ clean_docker:
 	@docker-compose down
 	@docker container prune
 	@docker image prune -a
-	@docker volume prune -a
+
+up_docker:
+	@docker-compose --env-file .env up --build
 
 enable_venv:  #make sure python 3.12, python-pip and python3-venv are installed in current machine
 	@rm -rf .venv/
