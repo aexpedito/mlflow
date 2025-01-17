@@ -1,3 +1,6 @@
+"""
+Main da API.
+"""
 import logging
 import os
 import sys
@@ -14,11 +17,26 @@ logging.basicConfig(level=logging.INFO)
 @app.route('/index', methods=['GET'])
 @app.route('/index.html', methods=['GET'])
 def main():
+    """
+    Função main para rota index.
+
+    Returns
+    -------
+    render_template
+        Web page to show in browser.
+    """
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    """
+    Função com rota para /predict para prever alguma entrada.
 
+    Returns
+    -------
+    json
+        Return a json object and status.
+    """
     dados = request.json
     app.logger.info(f"{dados}")
     #load do modelo registrado
@@ -51,7 +69,12 @@ def predict():
         }
         return jsonify(response), 500
 
+"""
+Start function.
+"""
 if __name__ == "__main__":
+    """
+    Inicializa a api.
+    """
     port = sys.argv[1]
     app.run(host="0.0.0.0", port=port, debug=False)
-

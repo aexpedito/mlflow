@@ -68,7 +68,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-  
+
   api:
     build: ./api
     image: api_rest

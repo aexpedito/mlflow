@@ -4,4 +4,3 @@
 
 # Deletar recursos do Docker (Opcional)
 1. make clean_docker
-

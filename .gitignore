@@ -2,3 +2,4 @@
 .venv/
 db_data/
 minio_data/
+.ruff_cache/
