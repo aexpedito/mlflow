@@ -1,10 +1,12 @@
-from app import app
-from flask import render_template, jsonify, request
-import sys
-import mlflow
-import pandas as pd
-import os
 import logging
+import os
+import sys
+
+import pandas as pd
+from app import app
+from flask import jsonify, render_template, request
+
+import mlflow
 
 logging.basicConfig(level=logging.INFO)
 
@@ -23,25 +25,31 @@ def predict():
     tracking_uri = os.getenv('FLASK_TRACK_URI')
     model_name = os.getenv('FLASK_MODEL_NAME')
     model_version = os.getenv('FLASK_MODEL_VER')
-    app.logger.info(f"{model_name}---{tracking_uri}---{model_version}")
+    app.logger.info(f"{model_name} --- {model_version} --- {tracking_uri}")
 
-    mlflow.set_tracking_uri(tracking_uri)
-    model_uri = f"models:/{model_name}/{model_version}"
-    model = mlflow.sklearn.load_model(model_uri)
+    #set do tracking uri
+    try:
+        mlflow.set_tracking_uri(tracking_uri)
+        model_uri = f"models:/{model_name}/{model_version}"
+        model = mlflow.sklearn.load_model(model_uri)
+        #make prediction
+        X_test = pd.DataFrame(dados, index=[0])
+        prediction = model.predict(X_test)
 
-    #TODO make predicition
-    X_test = pd.DataFrame(dados, index=[0])
-    print(X_test)
-    prediction = model.predict(X_test)
-
-    print(prediction)
-
-    response = {
-        "message": "Success",
-        "status": "success",
-        "Potability": f"{prediction}"
-    }
-    return jsonify(response), 200
+        response = {
+            "message": "Success",
+            "status": "success",
+            "Potability": f"{prediction}"
+        }
+        return jsonify(response), 200
+    except Exception as error:
+        app.logger.error(error)
+        response = {
+            "message": "Failure",
+            "status": "failure",
+            "Potability": f"{error}"
+        }
+        return jsonify(response), 500
 
 if __name__ == "__main__":
     port = sys.argv[1]

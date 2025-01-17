@@ -11,7 +11,7 @@ $ aws s3 cp notes.txt s3://minio-bucket/artifacts/python_env.yaml --endpoint-url
 #Permanently delete runs in the `deleted` lifecycle stage.
 $ mlflow gc
 
-
+docker run --name api-rest-test api_rest:latest 
 
 
 
