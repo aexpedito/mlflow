@@ -23,3 +23,18 @@
 
 # Deletar recursos do Docker (Opcional)
 1. make clean_docker
+
+
+# Exemplo de chamada de API
+POST: http://localhost:8081/predict
+{
+  "numeric__ph": "0.433417",
+	"numeric__Hardness": "2.001473",
+	"numeric__Solids": "0.530563",
+	"numeric__Chloramines": "1.067017",
+	"numeric__Sulfate": "1.772637",
+	"numeric__Conductivity": "-0.556168",
+	"numeric__Organic_carbon": "0.181255",
+	"numeric__Trihalomethanes": "-0.456707",
+	"numeric__Turbidity": "-0.271335"
+}
