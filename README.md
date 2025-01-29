@@ -38,3 +38,6 @@ POST: http://localhost:8081/predict
 	"numeric__Trihalomethanes": "-0.456707",
 	"numeric__Turbidity": "-0.271335"
 }
+
+# Link para o repositório
+https://github.com/aexpedito/mlflow
