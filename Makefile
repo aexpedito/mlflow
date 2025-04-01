@@ -6,8 +6,14 @@ clean_docker:
 	@docker container prune
 	@docker image prune -a
 
-up_docker:
-	@docker-compose --env-file .env up --build
+build: #build first time api image in local docker
+	@docker-compose -f docker-compose.yaml --env-file myenv.env up --build
+
+up:
+	@docker-compose -f docker-compose.yaml --env-file myenv.env up
+
+down:
+	@docker-compose down
 
 enable_venv:  #make sure python 3.12, python-pip and python3-venv are installed in current machine
 	@rm -rf .venv/

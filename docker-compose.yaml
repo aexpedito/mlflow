@@ -77,8 +77,6 @@ services:
       - tracking_server
     ports:
       - "8081:8081"
-    networks:
-      - frontend
     environment:
       - FLASK_APP=${FLASK_APP}
       - FLASK_ENV=${FLASK_ENV}
@@ -88,7 +86,8 @@ services:
       - FLASK_TRACK_URI=${FLASK_TRACK_URI}
       - FLASK_MODEL_NAME=${FLASK_MODEL_NAME}
       - FLASK_MODEL_VER=${FLASK_MODEL_VER}
-    command: python main.py 8081
+    networks:
+      - frontend
 
 volumes:
   db_data:
