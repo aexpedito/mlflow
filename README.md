@@ -1,4 +1,4 @@
-# Passo a passo de como utilizar
+# Passo a passo de como utilizar a API para predição de agua potável ou não. 0 é não potável, 1 é potável
 
 # Inicializar o ambiente virtual
 1. make enable_venv
