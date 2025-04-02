@@ -9,23 +9,29 @@
 # Instala as dependencias
 1. make install
 
-# Inicializar MLFlow, Minio e Postgres
-1. make up_docker
+# Cria as imagens do projeto, já inicializa o projeto
+1. make build
+
+# Inicializar MLFlow, Minio, Postgres e API
+1. make up
+
+# Down da aplicação caso necessario atualizar alguma variavel no arquivo myenv.env
+1. make down
 
 # Criar o bucket de nome mlflow e a chave de acesso no minio
 ## copiar a chave nas variaveis: MINIO_ACCESS_KEY, AWS_ACCESS_KEY_ID, MINIO_SECRET_ACCESS_KEY, AWS_SECRET_ACCESS_KEY
 
 
-# Editar o arquivo .env as variaveis FLASK_MODEL_NAME, FLASK_MODEL_VER
-## As variaveis contem o nome e versão do modelo registrado
+# Editar o arquivo myenv.env as variaveis FLASK_MODEL_NAME, FLASK_MODEL_VER
+## As variaveis contem o nome e versão do modelo registrado no mlflow
 
-# Editar arquivo potability.ipynb para criar os modelos
+# Editar arquivo potability.ipynb para criar os modelos. Utilizei o VSCode com as extensões Jupyter para edição.
 
 # Deletar recursos do Docker (Opcional)
 1. make clean_docker
 
 
-# Exemplo de chamada de API
+# Exemplo de chamada de API (dados normalizados)
 POST: http://localhost:8081/predict
 {
   "numeric__ph": "0.433417",
@@ -41,3 +47,6 @@ POST: http://localhost:8081/predict
 
 # Link para o repositório
 https://github.com/aexpedito/mlflow
+
+# Dados utilizados
+https://www.kaggle.com/datasets/adityakadiwal/water-potability?resource=download
