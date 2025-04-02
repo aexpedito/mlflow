@@ -18,6 +18,8 @@ down:
 enable_venv:  #make sure python 3.12, python-pip and python3-venv are installed in current machine
 	@rm -rf .venv/
 	@python3 -m venv .venv/
+	@mkdir db_data
+	@mkdir minio_data
 
 install: #enable virtualenv before make install: source .venv/bin/activate
 	@python -m pip install -q poetry==1.8.5
